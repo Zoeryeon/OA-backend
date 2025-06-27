@@ -19,4 +19,26 @@ router.get('/keyword', (req, res) => {
   });
 });
 
+// GET /keyword/[id]
+router.get('/keyword/:id', (req, res) => {
+  const { id } = req.params;
+  console.log(id, '=======');
+
+  const query = `
+    SELECT k.keyword 
+    FROM keyword_tb k
+    JOIN vod_keyword vk ON k.keyword_id = vk.keyword_id
+    WHERE vk.vod_id = ?
+  `;
+
+  connection.query(query, [id], (err, result) => {
+    if (err) {
+      console.error('키워드ID 가져오기 에러:', err.message);
+      // 500: 서버 내부 에러
+      return res.status(500).send('Database error');
+    }
+    res.json(result);
+  });
+});
+
 module.exports = router;
