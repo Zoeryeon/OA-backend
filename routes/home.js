@@ -6,25 +6,13 @@ const router = express.Router();
 const connection = require('../config/mysql');
 
 // GET /vod - 모든 vod 데이터 조회
-router.get('/', (req, res) => {
-  const count = parseInt(req.query.count);
-  let offset = 0;
-  if (count === 0) {
-    offset = 0;
-  } else if (count === 1) {
-    offset = 15;
-  } else {
-    offset = 9 + 6 * count;
-  }
-  const limit = count === 0 ? 15 : 6;
-  console.log(offset);
+router.get('/home-vod', (req, res) => {
   const query = `SELECT vod.*, JSON_ARRAYAGG(keyword_tb.keyword) keyword FROM vod
   JOIN vod_keyword ON vod.vod_id = vod_keyword.vod_id
   JOIN keyword_tb ON vod_keyword.keyword_id = keyword_tb.keyword_id
-  GROUP BY vod.vod_id
-  LIMIT ? OFFSET ?`;
+  GROUP BY vod.vod_id`;
   // results는 배열로 반환
-  connection.query(query, [limit, offset], (err, result) => {
+  connection.query(query, (err, result) => {
     if (err) {
       console.error('vod 데이터 가져오기 에러: ', err.message);
       // 500: 서버 내부 에러
