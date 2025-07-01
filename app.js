@@ -12,6 +12,7 @@ const homeRouter = require('./routes/home');
 const vodRouter = require('./routes/vod');
 const allRouter = require('./routes/all');
 const keywordRouter = require('./routes/keyword');
+const freeRouter = require('./routes/free');
 
 // dotnev 활성화
 dotenv.config();
@@ -59,6 +60,7 @@ app.use(homeRouter);
 app.use(vodRouter);
 app.use(allRouter);
 app.use(keywordRouter);
+app.use(freeRouter);
 
 // 에러처리 미들웨어 (status: 상태 메세지 / 500: 서버 에러)
 app.use((err, req, res, next) => {
