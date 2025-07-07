@@ -13,7 +13,7 @@ const vodRouter = require('./routes/vod');
 const allRouter = require('./routes/all');
 const keywordRouter = require('./routes/keyword');
 const freeRouter = require('./routes/free');
-const searchRouter = require('./routes/searchRouter');
+const searchRouter = require('./routes/search');
 
 // dotnev 활성화
 dotenv.config();

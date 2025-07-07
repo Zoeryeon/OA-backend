@@ -19,7 +19,7 @@ router.get('/search', (req, res) => {
   // results는 배열로 반환
   connection.query(query, [keyword, keyword, keyword], (err, result) => {
     if (err) {
-      console.error('all 데이터 가져오기 에러: ', err.message);
+      console.error('검색 데이터 가져오기 에러: ', err.message);
       // 500: 서버 내부 에러
       return res.status(500).send('Database Error');
     }
