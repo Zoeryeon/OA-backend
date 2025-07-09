@@ -2,7 +2,7 @@
 const mysql = require('mysql2');
 
 // 디비 연결 정보
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '1234',
@@ -14,12 +14,6 @@ const connection = mysql.createConnection({
   connectionLimit: 10,
   // 커넥션 풀이 가득차도 무제한 대기 허용
   queueLimit: 0,
-});
-
-// 디비 연결
-connection.connect((err) => {
-  if (err) console.error('mysql connection error: ' + err);
-  console.log('mysql connected sucessfully');
 });
 
 module.exports = connection;

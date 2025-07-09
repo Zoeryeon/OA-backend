@@ -5,7 +5,7 @@ CREATE DATABASE oa_db DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_gene
 USE oa_db;
 
 -- vod테이블 삭제
-DROP TABLE vod;
+-- DROP TABLE vod;
 -- vod테이블 생성 
 CREATE TABLE vod (
 	vod_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -19,28 +19,28 @@ CREATE TABLE vod (
     is_interview CHAR(1) NOT NULL DEFAULT 'N',
     category_id INT NOT NULL
 );
-DESC vod;
+-- DESC vod;
 
 -- category테이블 삭제
-DROP TABLE category;
+-- DROP TABLE category;
 -- category테이블 생성 
-CREATE TABLE category(
+CREATE TABLE category_tb(
 	category_id INT AUTO_INCREMENT PRIMARY KEY,
     category VARCHAR(20) NOT NULL
 );
-DESC category;
+-- DESC category;
 -- category테이블 이름 변경
-ALTER TABLE category RENAME category_tb;
+-- ALTER TABLE category RENAME category_tb;
 
-DROP TABLE keyword;
+-- DROP TABLE keyword;
 -- keyword테이블 생성 
 CREATE TABLE keyword_tb(
 	keyword_id INT AUTO_INCREMENT PRIMARY KEY,
     keyword VARCHAR(15) NOT NULL
 );
-DESC keyword;
+-- DESC keyword;
 -- keyword테이블 이름 변경
-ALTER TABLE keyword RENAME keyword_tb;
+-- ALTER TABLE keyword RENAME keyword_tb;
 
 -- vod_keyword테이블 생성 
 CREATE TABLE vod_keyword(
@@ -48,12 +48,12 @@ CREATE TABLE vod_keyword(
     keyword_id INT NOT NULL,
     PRIMARY KEY(vod_id, keyword_id)
 );
-DESC vod_keyword;
+-- DESC vod_keyword;
 
 -- category 데이터 넣기
 INSERT INTO category_tb(category) VALUES
 ('뮤지컬'), ('연극'), ('무용'), ('음악');
-SELECT * FROM category_tb;
+-- SELECT * FROM category_tb;
 
 -- vod 데이터 넣기
 INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
@@ -266,11 +266,12 @@ INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, ca
 ('작곡가로 커리어를 쌓는 노하우', 'OA PLUS+ Vol.2', '/images/vod/7674dc18cfe8fef4c3711dd1b381ce39.webp', '25 WoW~', NULL, 61, 'N', 4),
 ('새로운 장르를 개척하는 용감, 음악감독 신창렬', 'OA PLUS+ Vol.2', '/images/vod/a112c97baddf462e168a5dd0dded11b4.webp', '25 WoW~', NULL, 48, 'N', 4);
 
-SELECT * FROM vod;
+-- SELECT * FROM vod;
 
-INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
-('별 헤는 밤', '별 하나에 음악소리', '/images/vod/efc6b8a6193e036cdccb7a95adb49fc7.webp', 'FREE', NULL, 100, 'N', 1),
-('뮤지컬 <백만송이의 사랑>', '어디서든 피어나는 눈부신 사랑', '/images/vod/7ecfd6095d9b5d813976af778ad3d4c3.webp', '9 WoW~', 'All', 92, 'N', 1);
+-- 지우고나서 다시 생성했을때
+-- INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
+-- ('별 헤는 밤', '별 하나에 음악소리', '/images/vod/efc6b8a6193e036cdccb7a95adb49fc7.webp', 'FREE', NULL, 100, 'N', 1),
+-- ('뮤지컬 <백만송이의 사랑>', '어디서든 피어나는 눈부신 사랑', '/images/vod/7ecfd6095d9b5d813976af778ad3d4c3.webp', '9 WoW~', 'All', 92, 'N', 1);
 
 -- keyword 데이터 넣기
 INSERT INTO keyword_tb(keyword) VALUES
@@ -286,7 +287,7 @@ INSERT INTO keyword_tb(keyword) VALUES
 ('발레'), ('경연대회'), ('클래식'), ('바이올린'), ('콘트라베이스'), ('첼로'), ('호른'), ('비올라'), ('트롬본'),
 ('트럼펫'), ('국악'), ('작곡'), ('아쟁'), ('대금'), ('판소리'), ('해금'), ('피리'), ('정가'), ('거문고'), ('가야금');
 
-SELECT * FROM keyword_tb;
+-- SELECT * FROM keyword_tb;
 
 
 INSERT INTO vod_keyword(vod_id, keyword_id) VALUES
@@ -325,10 +326,10 @@ INSERT INTO vod_keyword(vod_id, keyword_id) VALUES
 (137,66), (137,67), (137,68), (137,69), (138,66), (138,67), (138,68), (138,69), (139,66), (139,67), (139,68), (139,69), 
 (140,4), (140,5), (140,11), (141,4), (141,5), (141,11), (142,7), (142,4), (142,5);
 
-SELECT * FROM vod_keyword;
+-- SELECT * FROM vod_keyword;
 
 -- vod테이블 삭제
-DROP TABLE oaset;
+-- DROP TABLE oaset;
 -- oaset테이블 생성 
 CREATE TABLE oaset (
 	oaset_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -341,7 +342,7 @@ CREATE TABLE oaset (
     is_interview CHAR(1) NOT NULL DEFAULT 'N',
     category_id INT NOT NULL
 );
-DESC oaset;
+-- DESC oaset;
 
 -- oaset 데이터 넣기
 INSERT INTO oaset(price, title, intro, img_url, favorite, is_interview, category_id) VALUES
@@ -396,18 +397,15 @@ INSERT INTO oaset(price, title, intro, img_url, favorite, is_interview, category
 ('60 WoW~', '새롭게 추가된 신선한 감이 궁금하다면', '오아플러스 큐레이션', '/images/oaset/90fa7bb135c83b08fecc02e654206a7a.webp', 39, 'N', 4);
 INSERT INTO oaset(price, title, intro, img_url, favorite, is_interview, category_id) VALUES
 ('62 WoW~', '아트앤테크, 내 작품에 한끗을 더하는 기술 활용', '오아플러스 큐레이션', '/images/oaset/dd083f94c67edececf526611a4e48d14.webp', 53, 'N', 2);
-
 INSERT INTO oaset(price, title, intro, img_url, favorite, is_interview, category_id) VALUES
 ('39 WoW~', '지구를 지켜줘 SET', '환경의 날 오아 큐레이션', '/images/oaset/bc60a5ffa089c655af4b28de040745f3.webp', 86, 'N', 3);
-
--- 여기부터
 INSERT INTO oaset(price, title, intro, img_url, favorite, is_interview, category_id) VALUES
 ('30 WoW~', '작업에 새로운 영감이 필요하다면', '오아플러스 큐레이션', '/images/oaset/db23bca867b64569178d6043acbf149e.webp', 70, 'N', 1);
 
-SELECT * FROM oaset;
+-- SELECT * FROM oaset;
 
 -- view 테이블 삭제
-DROP VIEW vod_oaset;
+-- DROP VIEW vod_oaset;
 -- vod 랑 oaset 합칠 가상테이블 view 만들기
 CREATE VIEW vod_oaset AS
 SELECT vod_id, NULL AS oaset_id, title, summary, img_url, price, age, favorite, created_at, is_interview, category_id, NULL AS intro, 'vod' AS source
@@ -416,15 +414,5 @@ UNION ALL
 SELECT NULL AS vod_id, oaset_id, title, NULL AS summary, img_url, price, NULL AS age, favorite, created_at, is_interview, category_id, intro, 'oaset' AS source
 FROM oaset;
 
-SELECT * FROM vod_oaset;
-
-
-SELECT v.*, k.keyword FROM vod_oaset v LEFT JOIN(
-            SELECT vod_keyword.vod_id, JSON_ARRAYAGG(keyword_tb.keyword) keyword FROM vod_keyword
-            JOIN keyword_tb ON vod_keyword.keyword_id = keyword_tb.keyword_id
-            GROUP BY vod_keyword.vod_id
-            ) k ON v.vod_id = k.vod_id
-            WHERE v.title LIKE '%동아%' OR
-				v.summary LIKE '%동아%' OR
-				k.keyword LIKE '%동아%';
+-- SELECT * FROM vod_oaset;
 
