@@ -32,7 +32,7 @@ CREATE TABLE category_tb(
 -- category테이블 이름 변경
 -- ALTER TABLE category RENAME category_tb;
 
--- DROP TABLE keyword;
+-- DROP TABLE keyword_tb;
 -- keyword테이블 생성 
 CREATE TABLE keyword_tb(
 	keyword_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -67,7 +67,7 @@ INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, ca
 ('AmI-Q interview', '<AmI-Q> 아티스트 ‘팀 에이미(Team AmI)’의 배우 정현준 인터뷰', '/images/vod/9a4383d75ec0465046a13e6db60ed01e.webp', 'FREE', NULL, 20, 'Y', 2);
 INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
 ('[52회 동아무용] 전체 부문 금상 수상작', '제52회 동아무용콩쿠르 본선 진출작 모음', '/images/vod/24fc6343426b01b721d7f8ef9fd0eba3.webp', '10 WoW~', 'All', 58, 'N', 3),
-('[38회 동아국악] 가야금 학생부 본선 경연 영상', '제38회 동아국악콩쿠르 본선 경연 영상 모음', '/images/vod/48a04bb1fe658c344d424ad5414d3dfe.webp', '12 WoW~', 'All', 42, 'Y', 4);
+('[38회 동아국악] 가야금 학생부 본선 경연 영상', '제38회 동아국악콩쿠르 본선 경연 영상 모음', '/images/vod/48a04bb1fe658c344d424ad5414d3dfe.webp', '12 WoW~', 'All', 42, 'N', 4);
 INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
 ('[6회 동아뮤지컬] 본선 진출자 축하무대', '혼자가 아닌 당신을 위한 \'You Will Be Found\'', '/images/vod/a723be9dd143c0fba7ffd10271868d53.webp', 'FREE', NULL, 30, 'Y', 1),
 ('[6회 동아뮤지컬] 수상자 하이라이트', '수상자들의 넘버들만 하이라이트로 모았다!', '/images/vod/3583c207dee69074d299b9178a6d1923.webp', 'FREE', NULL, 39, 'Y', 1);
@@ -267,6 +267,8 @@ INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, ca
 ('새로운 장르를 개척하는 용감, 음악감독 신창렬', 'OA PLUS+ Vol.2', '/images/vod/a112c97baddf462e168a5dd0dded11b4.webp', '25 WoW~', NULL, 48, 'N', 4);
 
 -- SELECT * FROM vod;
+ -- INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
+ -- ('작곡가로 커리어를 쌓는 노하우', 'OA PLUS+ Vol.2', '/images/vod/7674dc18cfe8fef4c3711dd1b381ce39.webp', '25 WoW~', NULL, 61, 'N', 4);
 
 -- 지우고나서 다시 생성했을때
 -- INSERT INTO vod (title, summary, img_url, price, age, favorite, is_interview, category_id) VALUES
