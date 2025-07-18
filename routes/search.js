@@ -44,6 +44,24 @@ router.get('/search', (req, res) => {
             LIMIT ? OFFSET ?`;
 
     params = [keyword, keyword, limit, offset];
+  } else if (select === 'plus') {
+    query = `SELECT v.*, k.keyword FROM vod_oaset v LEFT JOIN(
+            SELECT vod_keyword.vod_id, JSON_ARRAYAGG(keyword_tb.keyword) keyword FROM vod_keyword
+            JOIN keyword_tb ON vod_keyword.keyword_id = keyword_tb.keyword_id
+            GROUP BY vod_keyword.vod_id
+            ) k ON v.vod_id = k.vod_id
+            WHERE v.summary LIKE '%OA%' COLLATE utf8mb4_general_ci AND (v.title LIKE ? OR v.summary LIKE ? OR k.keyword LIKE ? ) 
+            LIMIT ? OFFSET ?`;
+    params = [keyword, keyword, keyword, limit, offset];
+  } else if (select === 'interview') {
+    query = `SELECT v.*, k.keyword FROM vod_oaset v LEFT JOIN(
+            SELECT vod_keyword.vod_id, JSON_ARRAYAGG(keyword_tb.keyword) keyword FROM vod_keyword
+            JOIN keyword_tb ON vod_keyword.keyword_id = keyword_tb.keyword_id
+            GROUP BY vod_keyword.vod_id
+            ) k ON v.vod_id = k.vod_id
+            WHERE v.is_interview = 'Y' COLLATE utf8mb4_general_ci AND (v.title LIKE ? OR v.summary LIKE ? OR k.keyword LIKE ? ) 
+            LIMIT ? OFFSET ?`;
+    params = [keyword, keyword, keyword, limit, offset];
   }
 
   // 공통쿼리
