@@ -93,16 +93,12 @@ router.get('/search', (req, res) => {
       return res.status(500).send('Database Error');
     }
     const total = countResult[0]?.total || 0;
-    console.log(total);
+
     connection.query(query, params, (err, result) => {
       if (err) {
         console.error('데이터 가져오기 에러: ', err.message);
         // 500: 서버 내부 에러
         return res.status(500).send('Database Error');
-      }
-
-      if (result.length === 0) {
-        return res.status(404).json({ message: '데이터 없음' });
       }
 
       res.json({ total, data: result });
